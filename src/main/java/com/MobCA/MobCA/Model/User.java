@@ -7,24 +7,12 @@ import javax.persistence.*;
 @Table(name = "\"user_info\"")
 public class User {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
-    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", initialValue = 1)
-    private int userId;
-
     @Id
     private String userName;
 
     private String password;
 
     private String email;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public String getUserName() {
         return userName;
@@ -53,7 +41,6 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
@@ -64,7 +51,6 @@ public class User {
     }
 
     public User(int userId, String userName, String password, String email) {
-        this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.email = email;
