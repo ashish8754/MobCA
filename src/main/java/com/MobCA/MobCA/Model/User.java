@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class User {
 
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_sequence")
-    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence")
+    @SequenceGenerator(name = "user_sequence", sequenceName = "user_sequence", initialValue = 1)
     private int userId;
 
     @Id
@@ -18,12 +18,12 @@ public class User {
 
     private String email;
 
-    public Integer getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setPlayerId(Integer playerId) {
-        this.userId = playerId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {
@@ -52,21 +52,21 @@ public class User {
 
     @Override
     public String toString() {
-        return "Player{" +
-                "playerId=" + userId +
+        return "User{" +
+                "userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
 
-    public User(Integer playerId, String userName, String password, String email) {
-        this.userId= playerId;
+    public User() {
+    }
+
+    public User(int userId, String userName, String password, String email) {
+        this.userId = userId;
         this.userName = userName;
         this.password = password;
         this.email = email;
-    }
-
-    public User() {
     }
 }
